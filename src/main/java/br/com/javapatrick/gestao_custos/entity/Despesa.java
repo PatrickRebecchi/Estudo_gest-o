@@ -24,13 +24,16 @@ public class Despesa {
     private Long id;
     @NotBlank(message = "Descricao obrigadoria")
     private String descricao;
+    @NotBlank(message = "Data da despesa")
     private LocalDate data;
+    @NotBlank(message = "Valor da despesa")
     private BigDecimal valor;
     @Enumerated(EnumType.STRING)
     private Categoria categoria;
-
     @CreatedDate
     private LocalDate dataCriacao;
-    @NotBlank(message = "Email obrigatorio")
-    private String email;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id") // FK correta
+    private User user;
 }
